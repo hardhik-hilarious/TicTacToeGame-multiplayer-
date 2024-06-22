@@ -1,0 +1,12 @@
+function drawState(gameId){
+    return WIN_STATES.every(row=>{
+        return (
+            row.some(cell=>{
+                games[gameId].board[cell]=='x'
+            }) &&
+            row.some(cell=>{
+                games[gameId].board[cell]=='o'
+            })
+        )
+    })
+}

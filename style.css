@@ -1,0 +1,217 @@
+ @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+
+*::before,
+*::after,
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #E6E6FA;
+}
+.fullbody{
+    background-color: #B1AA81;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}
+h1{
+    text-align: center;
+    color: rgb(141, 51, 52);
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+h1::before,
+h1::after{
+    content: "";
+    height: 2px;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    background-color: black;
+}
+h1::after{
+    top: 53px;
+}
+.container{
+    
+    
+    height: 70vh;
+    width: 60vw;
+    position: absolute;
+    top: 20vh;
+    left: 5vw;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    box-shadow: 8px 15px 50px 10px;
+    
+
+    
+   
+}
+.sidebar{
+ background-color: antiquewhite;
+ display: flex;
+ flex-flow: column;
+ justify-content: center;
+ 
+}
+.mainbar{
+ 
+ background-color: cadetblue;
+ 
+
+}
+.cnctbtn{
+    margin: 13px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-weight: 200;
+    text-shadow: 2px 2px 4px #8bd9b3;
+    
+}
+.createbtn{
+    margin: 13px;  
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-weight: 200;
+    text-shadow: 2px 2px 4px #8bd9b3;
+}
+.joinbtn{
+    margin: 13px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-weight: 200;
+    text-shadow: 2px 2px 4px #8bd9b3;
+}
+button,
+label{
+    background-color: #4682B4;
+    color: cornsilk;
+    margin-top: 5px;
+    padding: 10px;
+    width: 18vw;
+    margin: 13px;
+    border-width: 3px;
+    transition: all 0.5s;
+    cursor: pointer;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+.button:hover span {
+    padding-right: 25px;
+  }
+  
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+ul{
+    list-style: none;
+}
+button, ul li{
+    cursor: pointer;
+}
+.board{
+
+width: 70%;
+height: 70%;
+margin: auto;
+margin-top: 8%;
+display: none;
+grid-template-columns: repeat(3,auto);
+justify-content: center;
+align-content: center;
+
+}
+.cell{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.cell:first-child,
+:nth-child(2),
+:nth-child(3){
+    border-top: none;
+}
+.cell:nth-child(3n){
+    border-right: none;
+}
+.cell:nth-child(3n+1){
+    border-left: none;
+}
+.cell:last-child,:nth-child(8),:nth-child(7){
+    border-bottom: none;
+}
+.board.cross .cell:not(.cross):not(circle):hover::after,
+.cell.cross::after{
+    content: "";
+    height: 96px;
+    width: 5px;
+    background-color: blanchedalmond;
+    position: absolute;
+    transform: rotate(-45deg);
+
+
+}
+.board.cross .cell:not(.cross):not(circle):hover::before,
+.cell.cross::before{
+    content: "";
+    height: 96px;
+    width: 5px;
+    background-color: blanchedalmond;
+    position: absolute;
+    transform: rotate(45deg);
+}
+.board.circle .cell:not(.cross):not(.circle):hover::after,
+.cell.circle::after{
+    content: ' ';
+    height: 87px;
+    width: 86px;
+    background-color: cadetblue;
+    border-radius: 50%;
+    position: absolute;
+
+}
+.board.circle .cell:not(.cross):not(.circle):hover::before,
+.cell.circle::before{
+    content: ' ';
+    height: 95px;
+    width: 95px;
+    background-color: blanchedalmond;
+    border-radius: 50%;
+    position: absolute;
+
+}
+.cell.circle,.cell.cross{
+    cursor: not-allowed;
+}
+
+
+
+
+
+
+

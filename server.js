@@ -83,20 +83,23 @@ function onMessage(msg){
         case 'makeMove':
                 //console.log(games[data.gameId].board)
                 //console.log(data.board)
+                 // Add this line to check if the game is ongoing
                 games[data.gameId].board=data.board
                 
                 const isWinner=winState(data.gameId)
                 const isDraw=drawState(data.gameId)
                 if(isWinner){
+                    games[data.gameId].status = 'ended';
                     games[data.gameId].players.forEach(player=>{
                         clients[player.clientId].conn.send(JSON.stringify({
                             'tag':'winner',
-                            'winner':player.symbol
+                            'winner':data.symbol
                         }))
                     })
                 }
                 
                 else if(isDraw){
+                    // Mark the game as ended here
                     games[data.gameId].players.forEach(player=>{
                         clients[player.clientId].conn.send(JSON.stringify({
                             'tag':'gameDraw'

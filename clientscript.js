@@ -132,7 +132,8 @@ function cellClicked(event){
         'tag':'makeMove',
         'board':board,
         'clientId':clientId,
-        'gameId':gameId
+        'gameId':gameId,
+        'symbol': symbol
     }))
 }
 }

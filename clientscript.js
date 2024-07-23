@@ -30,7 +30,7 @@ const list=document.querySelector('ul')
 const sidebar=document.querySelector('.sidebar')
 const connectButton=document.querySelector('.cnctbtn')
 connectButton.addEventListener('click', (event) => { // Corrected 'addEventListner' to 'addEventListener'
-    socket = new WebSocket('ws://localhost:8080');
+    socket = new WebSocket('ws://localhost:8085');
     socket.onmessage = onMessage;
     event.target.disabled = true;
 });

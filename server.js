@@ -8,9 +8,47 @@
 //send and receive msges with the client using that connection obj
 var clients={}
 var games={}//stores list of players
-const http=require('http').createServer().listen(8080,console.log('listening on port 8080'))
-const server=require('websocket').server
-const socket=new server({'httpServer':http})
+
+//const http=require('http').createServer().listen(8080,console.log('listening on port 8080'))
+//const server=require('websocket').server
+//const socket=new server({'httpServer':http})
+const express = require('express');
+const http = require('http');
+const WebSocketServer = require('websocket').server;
+const path = require('path');
+
+const app = express();
+const server = http.createServer(app);
+const port=8085
+// Serve static files from the 'public' directory
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname), {
+    setHeaders: function (res, path, stat) {
+      if (path.endsWith('.js')) {
+        res.set('Content-Type', 'clientscript/javascript');
+      }
+    }
+  }));
+  app.use(express.static(path.join(__dirname,'style.css'), {
+    setHeaders: function (res, path, stat) {
+      if (path.endsWith('.css')) {
+        res.set('Content-Type', 'style/css');
+      }
+    }
+  }));
+  
+  
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname,'client.html'));
+  });
+
+// Start the HTTP server on port 8080
+server.listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
+});
+
+// WebSocket server setup
+const socket = new WebSocketServer({ httpServer: server });
 const WIN_STATES=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 socket.on('request',(req)=>{
     const conn=req.accept(null, req.origin)
